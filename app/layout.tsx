@@ -32,7 +32,7 @@ export default function RootLayout({
                 <div className="">
                     <AppNavbar />
                     <Navbar />
-                    <main className="container min-h-screen w-screen pt-48">
+                    <main className="min-h-screen bg-blue-50 px-2 mx-auto sm:px-10 pt-42">
                         {children}
                     </main>
                 </div>

@@ -10,6 +10,7 @@ export function useOutsideClick(
     useEffect(() => {
         function handleClick(e: MouseEvent) {
             if (ref.current && !ref.current.contains(e.target as Node)) {
+                e.stopPropagation();
                 handler();
             }
         }

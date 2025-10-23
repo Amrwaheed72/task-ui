@@ -1,11 +1,24 @@
 import { AiOutlineSafety } from 'react-icons/ai';
 import { CgNotes } from 'react-icons/cg';
 import { CiShoppingTag } from 'react-icons/ci';
-import { IoBagOutline, IoGiftOutline, IoPersonOutline } from 'react-icons/io5';
+import {
+    IoBagOutline,
+    IoGiftOutline,
+    IoPeople,
+    IoPersonOutline,
+} from 'react-icons/io5';
 import { LuNotebookText } from 'react-icons/lu';
 import { MdOutlineShoppingCart, MdPeopleOutline } from 'react-icons/md';
 import { PiHouse } from 'react-icons/pi';
+import { TbClockCheck } from 'react-icons/tb';
 
+export interface Stat {
+    badgeColor: string;
+    icon: React.ReactNode;
+    title: string;
+    mainValue: string;
+    subtitle: string;
+}
 export const navLinks = [
     {
         label: 'لوحة التحكم',
@@ -87,5 +100,36 @@ export const selectOptions = [
         label: 'العميل',
         icon: <IoPersonOutline />,
         color: 'text-green-700',
+    },
+];
+
+export const CardStats: Stat[] = [
+    {
+        badgeColor: 'bg-blue-600',
+        icon: <IoBagOutline className="text-3xl text-white" />,
+        title: 'إجمالي الموردين',
+        mainValue: '48',
+        subtitle: '+5 هذا الشهر',
+    },
+    {
+        badgeColor: 'bg-purple-600',
+        icon: <IoPeople className="text-3xl text-white" />,
+        title: 'إجمالي العملاء',
+        mainValue: '127',
+        subtitle: '12 طلب معلّق',
+    },
+    {
+        badgeColor: 'bg-green-600',
+        icon: <LuNotebookText className="text-3xl text-white" />,
+        title: 'إجمالي الطلبات',
+        mainValue: '342',
+        subtitle: '+28 هذا الأسبوع',
+    },
+    {
+        badgeColor: 'bg-orange-600',
+        icon: <TbClockCheck className="text-3xl text-white" />,
+        title: 'معدل النجاح',
+        mainValue: '94.5%',
+        subtitle: '323 طلب مكتمل',
     },
 ];
