@@ -1,6 +1,9 @@
-import { Stat } from '../utils/constants';
+import { Stat } from '../lib/constants';
+interface StatsCardProps {
+  stat: Stat;
+}
 
-const StatsCard = ({ stat }: Stat) => {
+const StatsCard = ({ stat }: StatsCardProps) => {
     const { icon, badgeColor, title, mainValue, subtitle } = stat;
     return (
         <div className="rounded-xl bg-white shadow-lg transition-shadow hover:shadow-xl">

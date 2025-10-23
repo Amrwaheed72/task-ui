@@ -6,9 +6,10 @@ import {
     IoRefresh,
     IoWarning,
 } from 'react-icons/io5';
+import { cn } from '../lib/utils';
 
 interface ActivityItem {
-    icon: React.ReactElement;
+    icon: React.ReactElement<{ className?: string }>;
     text: string;
     time: string;
     iconBgClass: string;
@@ -69,7 +70,9 @@ const RecentActivity: React.FC = () => {
                             className={`flex h-9 w-9 items-center justify-center rounded-full ${activity.iconBgClass}`}
                         >
                             {React.cloneElement(activity.icon, {
-                                className: `h-5 w-5 ${activity.iconColorClass}`,
+                                className: cn(
+                                    `h-5 w-5 ${activity.iconColorClass}`,
+                                ),
                             })}
                         </div>
                         <div className="flex flex-col items-start">

@@ -1,6 +1,6 @@
 import PageTitle from './components/PageTitle';
 import StatsCard from './components/StatsCard';
-import { CardStats } from './utils/constants';
+import { CardStats } from './lib/constants';
 import QuickActions from './components/QuickActions';
 import RecentOrdersTable from './components/RecentOrdersTable';
 import RecentActivity from './components/RecentActivity';

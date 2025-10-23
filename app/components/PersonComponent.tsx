@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useOutsideClick } from '../hooks/useOutsideClick';
-import { selectOptions } from '../utils/constants';
+import { selectOptions } from '../lib/constants';
 import { usePersonState } from '../store/PersonStore';
 
 const PersonComponent = ({

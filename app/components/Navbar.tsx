@@ -1,6 +1,6 @@
 'use client';
 
-import { navLinks } from '../utils/constants';
+import { navLinks } from '../lib/constants';
 import { useState } from 'react';
 
 const Navbar = () => {

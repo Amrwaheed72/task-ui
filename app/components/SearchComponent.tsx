@@ -1,6 +1,6 @@
 'use client';
 import { BiSearch } from 'react-icons/bi';
-import { searchLinks } from '../utils/constants';
+import { searchLinks } from '../lib/constants';
 import Link from 'next/link';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import { AnimatePresence, motion } from 'motion/react';
