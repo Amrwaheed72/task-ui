@@ -1,6 +1,5 @@
 import React from 'react';
 import { OrderItem } from '../types/types';
-import { recentOrders } from '../lib/constants';
 
 const getStatusClasses = (status: OrderItem['status']) => {
     switch (status) {
@@ -8,6 +7,14 @@ const getStatusClasses = (status: OrderItem['status']) => {
             return 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-400';
         case 'قيد المعالجة':
             return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-400';
+        case 'قيد التحضير':
+            return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-400';
+        case 'تم التسليم':
+            return 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-400';
+        case 'قيد التوصيل':
+            return 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-400';
+        case 'قيد المراجعة':
+            return 'bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-400';
         case 'جديد':
             return 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-400';
         default:
@@ -18,24 +25,34 @@ const getStatusClasses = (status: OrderItem['status']) => {
 const getStatusDot = (status: OrderItem['status']) => {
     switch (status) {
         case 'مكتمل':
+        case 'تم التسليم':
             return 'bg-green-500';
         case 'قيد المعالجة':
+        case 'قيد التحضير':
             return 'bg-yellow-500';
+        case 'قيد التوصيل':
         case 'جديد':
             return 'bg-blue-500';
+        case 'قيد المراجعة':
+            return 'bg-orange-500';
         default:
             return 'bg-gray-500';
     }
 };
 
 const handleFirstLetters = (name: string) => {
+    if (!name) return '';
     return name
         .split(' ')
         .map((word) => word[0])
         .join('');
 };
 
-const RecentOrdersTable: React.FC = () => {
+interface RecentOrdersTableProps {
+    orders: OrderItem[];
+}
+
+const RecentOrdersTable: React.FC<RecentOrdersTableProps> = ({ orders }) => {
     const TableRowClassname =
         'px-4 py-3 text-sm font-semibold text-gray-500 dark:text-gray-400 text-right';
 
@@ -55,7 +72,7 @@ const RecentOrdersTable: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {recentOrders.map((order, index) => (
+                        {orders.map((order, index) => (
                             <tr
                                 key={index}
                                 className="border-b border-gray-100 last:border-b-0 hover:bg-gray-50/50 dark:border-gray-700 dark:hover:bg-gray-700/50"

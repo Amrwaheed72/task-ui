@@ -28,7 +28,7 @@ const ProfileComponent = ({
                         y: -10,
                         transition: { duration: 0.15 },
                     }}
-                    className="absolute top-12 left-0 z-[100] w-[280px] overflow-hidden rounded-lg border border-gray-200 bg-white text-black shadow-xl dark:border-gray-700 dark:bg-gray-800"
+                    className="absolute top-12 left-0 z-100 w-[280px] overflow-hidden rounded-lg border border-gray-200 bg-white text-black shadow-xl dark:border-gray-700 dark:bg-gray-800"
                 >
                     <div className="flex flex-col">
                         <div className="flex items-center gap-3 bg-gray-50 p-4 dark:bg-gray-700/50">
@@ -56,7 +56,7 @@ const ProfileComponent = ({
                             </button>
                         </div>
 
-                        <div className="h-[1px] w-full bg-gray-200 dark:bg-gray-700" />
+                        <div className="h-[px] w-full bg-gray-200 dark:bg-gray-700" />
 
                         <div className="p-2">
                             <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/50">

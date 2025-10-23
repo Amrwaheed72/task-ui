@@ -1,14 +1,15 @@
 'use client';
 
-import { useState, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { IoSunny, IoMoon } from 'react-icons/io5';
 
 const ThemeToggle = () => {
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
+    console.log(theme);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         setMounted(true);
     }, []);
 

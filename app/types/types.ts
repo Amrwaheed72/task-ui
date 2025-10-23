@@ -5,14 +5,19 @@ export interface Stat {
     mainValue: string;
     subtitle: string;
 }
-
+export interface QuickActionItem {
+    text: string;
+    icon: React.ReactNode;
+    style: 'gradient' | 'outline';
+    color: string;
+}
 export interface PerformanceMetric {
     label: string;
     value: number;
     colorClass: string;
 }
 export interface OrderItem {
-    status: 'مكتمل' | 'قيد المعالجة' | 'جديد';
+    status: 'مكتمل' | 'قيد المعالجة' | 'جديد' |string;
     date: string;
     details: string;
     name: string;

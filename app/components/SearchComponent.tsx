@@ -30,7 +30,7 @@ const SearchComponent = ({
                         y: -10,
                         transition: { duration: 0.15 },
                     }}
-                    className="absolute top-12 -right-40 z-[100] w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white text-black shadow-xl dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                    className="absolute top-12 -right-40 z-100 w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white text-black shadow-xl dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                 >
                     <div className="relative flex flex-col p-4">
                         <div className="relative flex w-full text-gray-500 dark:text-gray-400">
@@ -42,7 +42,7 @@ const SearchComponent = ({
                             />
                         </div>
 
-                        <div className="my-4 h-[1px] w-full bg-gray-200 dark:bg-gray-700" />
+                        <div className="my-4 h-[px] w-full bg-gray-200 dark:bg-gray-700" />
 
                         <div>
                             <p className="mb-2 text-xs font-semibold text-gray-500 dark:text-gray-400">

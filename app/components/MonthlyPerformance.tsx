@@ -1,14 +1,20 @@
 import React from 'react';
-import { monthlyPerformanceData } from '../lib/constants';
+import { PerformanceMetric } from '../types/types'; 
 
-const MonthlyPerformance: React.FC = () => {
+interface MonthlyPerformanceProps {
+    performanceData: PerformanceMetric[];
+}
+
+const MonthlyPerformance: React.FC<MonthlyPerformanceProps> = ({
+    performanceData,
+}) => {
     return (
         <div className="rounded-xl bg-white p-6 shadow-md dark:bg-gray-800">
             <h2 className="mb-6 text-right text-xl font-bold text-gray-900 dark:text-gray-100">
-                الأداء الشهري
+                الأداء الشهري 
             </h2>
             <div className="flex flex-col gap-6">
-                {monthlyPerformanceData.map((metric, index) => (
+                {performanceData.map((metric, index) => (
                     <div
                         key={index}
                         className="flex flex-col items-start gap-2"

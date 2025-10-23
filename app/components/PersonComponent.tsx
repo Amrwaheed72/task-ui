@@ -30,7 +30,7 @@ const PersonComponent = ({
                         transition: { duration: 0.15 },
                     }}
                     transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                    className="absolute top-12 right-0 z-[100] w-[160px] overflow-hidden rounded-lg border border-gray-200 bg-white text-black shadow-xl dark:border-gray-700 dark:bg-gray-800"
+                    className="absolute top-12 right-0 z-100 w-40 overflow-hidden rounded-lg border border-gray-200 bg-white text-black shadow-xl dark:border-gray-700 dark:bg-gray-800"
                 >
                     <div className="flex flex-col py-1">
                         {selectOptions.map((option) => (

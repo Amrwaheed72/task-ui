@@ -77,7 +77,7 @@ const AppNavbar = () => {
                         />
                     </div>
 
-                    <div className="h-8 w-[1px] bg-gray-200 dark:bg-gray-700" />
+                    <div className="h-8 w-[px] bg-gray-200 dark:bg-gray-700" />
 
                     <ThemeToggle />
 
