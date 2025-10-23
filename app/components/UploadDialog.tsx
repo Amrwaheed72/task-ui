@@ -7,7 +7,7 @@ import {
     DialogClose,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { Info, X, RotateCcw, Trash2 } from 'lucide-react';
+import { Info, X, Trash2 } from 'lucide-react';
 
 const UploadDialog = ({
     children,
