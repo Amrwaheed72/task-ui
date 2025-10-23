@@ -1,10 +1,10 @@
 'use client';
 import { BiSearch } from 'react-icons/bi';
-import { searchLinks } from '../lib/constants';
+import { searchLinks } from '../../lib/constants';
 import Link from 'next/link';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import { AnimatePresence, motion } from 'framer-motion';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 const SearchComponent = ({
     searchOpen,

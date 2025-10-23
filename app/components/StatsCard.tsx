@@ -1,7 +1,7 @@
 import { ReactElement, cloneElement } from 'react';
 import { Stat } from '../types/types';
-import { cn } from '../lib/utils';
-import { colorMap } from '../lib/constants';
+import { cn } from '../../lib/utils';
+import { colorMap } from '../../lib/constants';
 
 interface StatsCardProps {
     stat: Stat;

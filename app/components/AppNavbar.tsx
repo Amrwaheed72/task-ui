@@ -7,7 +7,7 @@ import { usePersonState } from '../store/PersonStore';
 import PersonComponent from './PersonComponent';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import ProfileComponent from './ProfileComponent';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 import ThemeToggle from './ThemeToggle';
 
 const AppNavbar = () => {

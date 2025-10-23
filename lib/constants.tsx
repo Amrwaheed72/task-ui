@@ -16,7 +16,12 @@ import {
     IoAdd,
     IoDownload, // Added missing import
 } from 'react-icons/io5'; // Standardized to io5
-import { LuClipboard, LuFileSymlink, LuNotebookText, LuUser } from 'react-icons/lu';
+import {
+    LuClipboard,
+    LuFileSymlink,
+    LuNotebookText,
+    LuUser,
+} from 'react-icons/lu';
 import { MdOutlineShoppingCart, MdPeopleOutline } from 'react-icons/md';
 import { PiHouse } from 'react-icons/pi';
 import { TbClockCheck } from 'react-icons/tb';
@@ -26,7 +31,7 @@ import {
     PerformanceMetric,
     QuickActionItem,
     Stat,
-} from '../types/types';
+} from '../app/types/types';
 
 export const colorMap: {
     [key: string]: { bg: string; text: string };
@@ -244,7 +249,7 @@ export const managerRecentActivities: ActivityItem[] = [
         iconColorClass: 'text-purple-600 dark:text-purple-400',
         text: 'تقديم إعدادس من عميل',
         time: 'منذ ساعتين',
-    }, // Corrected dark mode classes based on previous fix
+    }, 
 ];
 
 export const managerQuickActions: QuickActionItem[] = [
@@ -261,7 +266,7 @@ export const managerQuickActions: QuickActionItem[] = [
         color: 'blue',
     },
     {
-        text: 'تحميل الأشمات',
+        text: 'تحميل الاصناف',
         icon: <IoDownload />,
         style: 'outline',
         color: 'green',
@@ -269,7 +274,6 @@ export const managerQuickActions: QuickActionItem[] = [
 ];
 
 // --- Data for المورد (Supplier) ---
-// (Sample data based on image_9e01e1.png)
 export const supplierCardStats: Stat[] = [
     {
         badgeColor: 'blue',

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QuickActionItem } from '../types/types';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
+import dynamic from 'next/dynamic';
+const UploadDialog = dynamic(() => import('./UploadDialog'));
 interface QuickActionsProps {
     actions: QuickActionItem[];
 }
@@ -36,6 +38,10 @@ const getIconWrapperClasses = (style: string, color: string) => {
     }
 };
 const QuickActions: React.FC<QuickActionsProps> = ({ actions }) => {
+    const [open, setOpen] = useState(false);
+    const handleShowDialog = (label: string) => {
+        if (label === 'تحميل الاصناف') setOpen(true);
+    };
     return (
         <div className="rounded-xl bg-white p-6 shadow-md dark:bg-gray-800">
             <h2 className="mb-6 text-right text-xl font-bold text-gray-900 dark:text-gray-100">
@@ -43,34 +49,36 @@ const QuickActions: React.FC<QuickActionsProps> = ({ actions }) => {
             </h2>
             <div className="flex flex-col gap-4">
                 {actions.map((action, index) => (
-                    <button
-                        key={index}
-                        type="button"
-                        className={cn(
-                            'flex cursor-pointer items-center justify-start gap-3 rounded-lg px-4 py-3 transition-shadow',
-                            getButtonClasses(action.style, action.color),
-                        )}
-                    >
-                        <div
+                    <UploadDialog key={index} open={open}>
+                        <button
+                            onClick={() => handleShowDialog(action.text)}
+                            type="button"
                             className={cn(
-                                'rounded-lg p-2',
-                                getIconWrapperClasses(
-                                    action.style,
-                                    action.color,
-                                ),
+                                'flex cursor-pointer items-center justify-start gap-3 rounded-lg px-4 py-3 transition-shadow',
+                                getButtonClasses(action.style, action.color),
                             )}
                         >
-                            {React.cloneElement(
-                                action.icon as React.ReactElement<
-                                    React.SVGProps<SVGSVGElement>
-                                >,
-                                { className: 'text-xl' },
-                            )}
-                        </div>
-                        <span className="text-base font-medium">
-                            {action.text}
-                        </span>
-                    </button>
+                            <div
+                                className={cn(
+                                    'rounded-lg p-2',
+                                    getIconWrapperClasses(
+                                        action.style,
+                                        action.color,
+                                    ),
+                                )}
+                            >
+                                {React.cloneElement(
+                                    action.icon as React.ReactElement<
+                                        React.SVGProps<SVGSVGElement>
+                                    >,
+                                    { className: 'text-xl' },
+                                )}
+                            </div>
+                            <span className="text-base font-medium">
+                                {action.text}
+                            </span>
+                        </button>
+                    </UploadDialog>
                 ))}
             </div>
         </div>

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTitle from './components/PageTitle';
 import StatsCard from './components/StatsCard';
-import { dashboardData } from './lib/constants';
+import { dashboardData } from '../lib/constants';
 import QuickActions from './components/QuickActions';
 import RecentOrdersTable from './components/RecentOrdersTable';
 import RecentActivity from './components/RecentActivity';

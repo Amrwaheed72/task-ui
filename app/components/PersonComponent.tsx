@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOutsideClick } from '../hooks/useOutsideClick';
-import { selectOptions } from '../lib/constants';
+import { selectOptions } from '../../lib/constants';
 import { usePersonState } from '../store/PersonStore';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 const PersonComponent = ({
     setSelectOpen,

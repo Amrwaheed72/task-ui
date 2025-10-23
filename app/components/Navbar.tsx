@@ -1,8 +1,8 @@
 'use client';
 
-import { navLinks } from '../lib/constants';
+import { navLinks } from '../../lib/constants';
 import { useState } from 'react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 const Navbar = () => {
     const [active, setActive] = useState('home');
