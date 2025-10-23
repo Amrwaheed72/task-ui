@@ -1,36 +1,42 @@
 'use client';
 import { useState } from 'react';
-import { BiChevronDown, BiNotification, BiSearch } from 'react-icons/bi';
+import { BiChevronDown, BiSearch } from 'react-icons/bi';
 import { HiOutlineBuildingOffice } from 'react-icons/hi2';
 import SearchComponent from './SearchComponent';
 import { usePersonState } from '../store/PersonStore';
 import PersonComponent from './PersonComponent';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import ProfileComponent from './ProfileComponent';
+import { cn } from '../lib/utils';
+import ThemeToggle from './ThemeToggle';
 
 const AppNavbar = () => {
     const [searchOpen, setSearchOpen] = useState(false);
     const [selectOpen, setSelectOpen] = useState(false);
-    const [ProfileOpen, setProfileOpen] = useState(false);
-    const { person, setPerson } = usePersonState();
+    const [profileOpen, setProfileOpen] = useState(false);
+    const { person } = usePersonState();
+
     return (
-        <div className="fixed top-0 z-999 w-full bg-linear-to-r from-blue-700 to-pink-700 px-6 py-3 sm:px-12">
-            <div className="flex justify-between">
-                <div className="flex items-center gap-2">
-                    <div className="rounded-xl bg-white p-2">
-                        <HiOutlineBuildingOffice className="text-2xl text-blue-500" />
+        <div className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white px-4 py-3 sm:px-10 dark:border-gray-700 dark:bg-gray-800">
+            <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                    <div className="rounded-lg bg-blue-600 p-2">
+                        <HiOutlineBuildingOffice className="text-2xl text-white" />
                     </div>
-                    <div className="hidden text-white sm:block">
-                        <p className="text-[16px] font-bold">
+                    <div className="hidden text-gray-900 sm:block dark:text-white">
+                        <p className="text-base font-bold">
                             منصة التوريد الذكية
                         </p>
-                        <p className="text-xs">الربط بين الموردين والعملاء</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                            الربط بين الموردين والعملاء
+                        </p>
                     </div>
                 </div>
-                <div className="flex items-center justify-center gap-2">
+
+                <div className="flex items-center justify-center gap-3">
                     <div className="relative">
                         <button
-                            className="flex cursor-pointer items-center gap-1 rounded-lg bg-white/20 px-3 py-2 text-white transition-colors hover:bg-white/30"
+                            className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-gray-600 transition-colors hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
                             type="button"
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -38,7 +44,7 @@ const AppNavbar = () => {
                             }}
                         >
                             <BiSearch className="text-xl" />
-                            <p className="hidden text-sm font-semibold sm:block">
+                            <p className="hidden text-sm font-medium sm:block">
                                 البحث السريع
                             </p>
                         </button>
@@ -47,44 +53,57 @@ const AppNavbar = () => {
                             searchOpen={searchOpen}
                         />
                     </div>
-                    <div>
-                        <div className="relative">
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectOpen((prev) => !prev);
-                                }}
-                                type="button"
-                                className="flex cursor-pointer items-center gap-1 rounded-lg bg-white/20 p-4 px-3 py-2 text-sm text-white transition-colors outline-none hover:bg-white/30"
-                            >
-                                {person}
-                                <BiChevronDown
-                                    className={`text-lg transition-transform ${selectOpen ? 'rotate-180' : ''}`}
-                                />
-                            </button>
-                            <PersonComponent
-                                selectOpen={selectOpen}
-                                setSelectOpen={setSelectOpen}
-                            />
-                        </div>
-                    </div>
-                    <div className="h-full w-[2px] bg-white/20" />
-                    <div className="relative cursor-pointer rounded-lg p-2 hover:bg-white/20">
-                        <IoMdNotificationsOutline className="text-xl text-white" />
-                        <div className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-600" />
-                    </div>
+
                     <div className="relative">
-                        <div
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectOpen((prev) => !prev);
+                            }}
+                            type="button"
+                            className="flex cursor-pointer items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 transition-colors outline-none hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
+                        >
+                            {person}
+                            <BiChevronDown
+                                className={cn(
+                                    'text-lg transition-transform',
+                                    selectOpen && 'rotate-180',
+                                )}
+                            />
+                        </button>
+                        <PersonComponent
+                            selectOpen={selectOpen}
+                            setSelectOpen={setSelectOpen}
+                        />
+                    </div>
+
+                    <div className="h-8 w-[1px] bg-gray-200 dark:bg-gray-700" />
+
+                    <ThemeToggle />
+
+                    <div className="relative">
+                        <button
+                            title="Notifications"
+                            type="button"
+                            className="relative cursor-pointer rounded-lg border border-gray-300 p-2 text-gray-600 transition-colors hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
+                        >
+                            <IoMdNotificationsOutline className="text-xl" />
+                            <div className="absolute top-1 right-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-red-600 dark:border-gray-800" />
+                        </button>
+                    </div>
+
+                    <div className="relative">
+                        <button
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setProfileOpen((prev) => !prev);
                             }}
-                            className="cursor-pointer rounded-full border-2 border-white bg-white/20 p-1 font-semibold text-white"
+                            className="h-9 w-9 cursor-pointer rounded-full border-2 border-blue-600 bg-gray-200 p-1 font-semibold text-blue-700 transition-opacity hover:opacity-90 dark:border-blue-400 dark:bg-gray-700 dark:text-blue-400"
                         >
                             AW
-                        </div>
+                        </button>
                         <ProfileComponent
-                            ProfileOpen={ProfileOpen}
+                            ProfileOpen={profileOpen}
                             setProfileOpen={setProfileOpen}
                         />
                     </div>

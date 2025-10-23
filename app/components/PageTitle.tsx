@@ -4,9 +4,11 @@ import { usePersonState } from '../store/PersonStore';
 const PageTitle = () => {
     const { person } = usePersonState();
     return (
-        <div className="flex flex-col gap-2 mb-8">
-            <p className="text-4xl font-bold">لوحة التحكم - {person} </p>
-            <p className="text-lg text-gray-500">
+        <div className="flex flex-col gap-1">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                لوحة التحكم - {person}
+            </h1>
+            <p className="text-md text-gray-600 dark:text-gray-400">
                 إدارة شاملة للمنصة والإشراف على جميع العمليات
             </p>
         </div>

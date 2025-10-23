@@ -1,7 +1,8 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import { selectOptions } from '../lib/constants';
 import { usePersonState } from '../store/PersonStore';
+import { cn } from '../lib/utils';
 
 const PersonComponent = ({
     setSelectOpen,
@@ -19,43 +20,35 @@ const PersonComponent = ({
             {selectOpen && (
                 <motion.div
                     ref={ref}
-                    key="search-dropdown"
-                    initial={{ opacity: 0, scale: 0.9, y: -10 }}
-                    animate={{
-                        opacity: 1,
-                        scale: 1,
-                        y: 0,
-                        transition: {
-                            type: 'spring',
-                            stiffness: 250,
-                            damping: 20,
-                        },
-                    }}
+                    key="person-dropdown"
+                    initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{
                         opacity: 0,
                         scale: 0.95,
                         y: -10,
                         transition: { duration: 0.15 },
                     }}
-                    className="absolute top-10 left-0 z-1001 overflow-hidden rounded-xl bg-white text-black shadow-2xl sm:left-0"
+                    transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                    className="absolute top-12 right-0 z-[100] w-[160px] overflow-hidden rounded-lg border border-gray-200 bg-white text-black shadow-xl dark:border-gray-700 dark:bg-gray-800"
                 >
-                    <div className="flex w-[150px] flex-col">
+                    <div className="flex flex-col py-1">
                         {selectOptions.map((option) => (
-                            <div
+                            <button
                                 onClick={() => {
                                     setPerson(option.label);
                                     setSelectOpen(false);
                                 }}
                                 key={option.label}
-                                className={`flex flex-1 cursor-pointer items-center gap-2 p-4 hover:bg-blue-50`}
+                                className="flex w-full cursor-pointer items-center gap-3 px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
                             >
-                                <span className={`${option.color} text-xl`}>
+                                <span className={cn('text-lg', option.color)}>
                                     {option.icon}
-                                </span>{' '}
-                                <span className="font-semibold">
+                                </span>
+                                <span className="font-medium">
                                     {option.label}
                                 </span>
-                            </div>
+                            </button>
                         ))}
                     </div>
                 </motion.div>

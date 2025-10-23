@@ -1,8 +1,8 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useOutsideClick } from '../hooks/useOutsideClick';
-import { PiPerson, PiSignOutBold } from 'react-icons/pi';
-import { IoPersonOutline } from 'react-icons/io5';
+import { PiSignOutBold } from 'react-icons/pi';
 import { CiSettings } from 'react-icons/ci';
+import { IoPersonOutline } from 'react-icons/io5';
 
 const ProfileComponent = ({
     ProfileOpen,
@@ -19,52 +19,50 @@ const ProfileComponent = ({
             {ProfileOpen && (
                 <motion.div
                     ref={ref}
-                    key="search-dropdown"
-                    initial={{ opacity: 0, scale: 0.9, y: -10 }}
-                    animate={{
-                        opacity: 1,
-                        scale: 1,
-                        y: 0,
-                        transition: {
-                            type: 'spring',
-                            stiffness: 250,
-                            damping: 20,
-                        },
-                    }}
+                    key="profile-dropdown"
+                    initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{
                         opacity: 0,
                         scale: 0.95,
                         y: -10,
                         transition: { duration: 0.15 },
                     }}
-                    className="absolute top-10 left-0 z-1001 overflow-hidden rounded-xl bg-white text-black shadow-2xl sm:left-0"
+                    className="absolute top-12 left-0 z-[100] w-[280px] overflow-hidden rounded-lg border border-gray-200 bg-white text-black shadow-xl dark:border-gray-700 dark:bg-gray-800"
                 >
-                    <div className="flex w-[270px] flex-col gap-4">
-                        <div className="flex gap-2 bg-blue-100 p-3">
-                            <div className="cursor-pointer rounded-full border-2 border-white bg-blue-800 p-2 font-semibold text-white">
+                    <div className="flex flex-col">
+                        <div className="flex items-center gap-3 bg-gray-50 p-4 dark:bg-gray-700/50">
+                            <div className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-blue-600 bg-gray-200 font-semibold text-blue-700 dark:border-blue-400 dark:bg-gray-700 dark:text-blue-400">
                                 AW
                             </div>
                             <div className="flex flex-col">
-                                <p className="text-lg font-bold">Amr Waheed</p>
-                                <p className="text-xs">
+                                <p className="text-sm font-bold text-gray-900 dark:text-gray-100">
+                                    Amr Waheed
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">
                                     amrmohamed877@gmail.com
                                 </p>
                             </div>
                         </div>
-                        <div className="">
-                            <div className="m-2 flex cursor-pointer items-center gap-2 rounded-lg p-1 text-gray-600 transition-colors hover:bg-gray-100">
-                                <IoPersonOutline className="text-xl" />
-                                <p className="font-bold">الملف الشخصي</p>
-                            </div>
-                            <div className="m-2 flex cursor-pointer items-center gap-2 rounded-lg p-1 text-gray-600 transition-colors hover:bg-gray-100">
-                                <CiSettings className="text-xl" />
-                                <p className="font-bold">الاعدادات</p>
-                            </div>
+
+                        <div className="flex flex-col gap-1 p-2">
+                            <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
+                                <IoPersonOutline className="text-lg" />
+                                <p className="font-medium">الملف الشخصي</p>
+                            </button>
+                            <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
+                                <CiSettings className="text-lg" />
+                                <p className="font-medium">الاعدادات</p>
+                            </button>
                         </div>
-                        <div className="h-[0.5px] w-full bg-gray-200" />
-                        <div className="m-2 flex cursor-pointer items-center gap-2 rounded-lg p-1 py-2 text-red-600 transition-colors hover:bg-red-50">
-                            <PiSignOutBold className="text-xl" />
-                            <p className="font-bold">تسجيل خروج</p>
+
+                        <div className="h-[1px] w-full bg-gray-200 dark:bg-gray-700" />
+
+                        <div className="p-2">
+                            <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/50">
+                                <PiSignOutBold className="text-lg" />
+                                <p className="font-medium">تسجيل خروج</p>
+                            </button>
                         </div>
                     </div>
                 </motion.div>
